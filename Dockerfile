@@ -1,7 +1,7 @@
-FROM centos:7
+FROM alpine:latest
 MAINTAINER bsw2@andrew.cmu.edu
 
-RUN yum -y install openssh-server rsync && yum clean all
+RUN apk update && apk add bash openssh rsync &&  rm -rf /var/cache/apk/*
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
